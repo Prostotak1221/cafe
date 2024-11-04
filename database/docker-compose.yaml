@@ -1,0 +1,13 @@
+services:
+  mysql:
+    image: mysql
+    restart: always
+    ports:
+      - 3306:3306
+    command: --init-file /data/application/init.sql
+    environment:
+      MYSQL_ROOT_USER: root
+      MYSQL_ROOT_PASSWORD: changeme
+    volumes:
+        - ./init.sql:/data/application/init.sql
+        - ./data/:/var/lib/mysql
